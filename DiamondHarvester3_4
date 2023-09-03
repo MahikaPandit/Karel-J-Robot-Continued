@@ -1,0 +1,121 @@
+// This code is from Chapter 3 , it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * Harvest a field of crops, (4x4)
+ * 
+ * @author Mahika Pandit
+ * @version 6-15-23
+ */
+public class DiamondHarvester3_4 extends Harvester
+{
+    /**
+     * Creates a DiamondHarvester3_4 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public DiamondHarvester3_4 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* DiamondHarvester3_4 methods: */
+    /**
+     * Harvests the beepers using the robot
+     * 
+     * @precondition: are on base position, on next corner in front of robot is a beeper
+     * @postcondition: are on last crop and have picked up last beeper
+     */
+    @Override
+    public void harvestField()
+    {
+        move();
+        harvestTwoRows();
+        positionForNextTwoRows();
+        harvestTwoRows();
+    }
+
+    /**
+     * Harvests two rows of beepers
+     * 
+     * precondition - at the beginning of a row, facing beepers as well as currently on a beeper
+     * postcondition - facing wall, standing on plain corner, facing away from empty row
+     */
+    @Override
+    public void harvestTwoRows()
+    {
+       harvestRows();
+    }
+    
+    /**
+     * Turns robot so robot can harvest next two rows
+     * 
+     * precondition - robot facing wall, standing on plain corner, facing away from empty row
+     * postcondition - robot facing away from wall, standing on beeper, facing row of beepers
+     */
+    @Override
+    public void positionForNextTwoRows()
+    {
+        move();
+        turnRight();
+        move();
+    }
+
+     /**
+     * robot harvests two rows of beepers
+     * 
+     * precondition - robot standing on beeper, facing row of beepers
+     * postcondition - robot standing on empty corner, facing away from empty row
+     *  facing empty row
+     */
+    public void harvestRows()
+    {
+        pickBeeper();
+        turnRight();
+        move();
+        turnLeft();
+        move();
+        pickBeeper();
+        turnRight();
+        move();
+        turnLeft();
+        move();
+        pickBeeper();
+        turnRight();
+        move();
+        turnLeft();
+        move();
+        pickBeeper();
+
+        move();
+        turnLeft();
+        move();
+        
+        turnLeft();
+        pickBeeper();
+        move();
+        turnRight();
+        move();
+        pickBeeper();
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        pickBeeper();
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        pickBeeper();
+    }
+}
