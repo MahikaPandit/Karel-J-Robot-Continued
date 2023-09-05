@@ -1,0 +1,215 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * Draws hello message to aliens
+ * @author Mahika Pandit
+ * @version 6-15-23
+ */
+
+// This code is from Chapter 3 , it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class AlienWriter3_5 extends Robot
+{
+    /**
+     * Creates a AlienWriter3_5 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public AlienWriter3_5 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* AlienWriter3_5 methods: */
+    /**
+     * draws text on screen, saying message "HELLO"
+     * 
+     * precondition: a blank screen, robot is on 3,2
+     * postcondition: robot on bottom of screen, message "HELLO" on screen
+     * 
+     */
+    public void drawText()
+    {
+        draw1stLetter();
+        draw2ndLetter();
+        draw3rd4thLetter();
+        draw3rd4thLetter();
+        draw5thLetter();
+    }
+
+    /**
+     * draws "H" on screen
+     * 
+     * precondition: 
+     * postcondition: 
+     * 
+     */
+    public void draw1stLetter()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        turnLeft();
+        move();
+        move();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        turnRight();
+        move();
+        move();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        move();
+        move();
+        move();
+        move();
+        turnRight();
+        turnRight();
+        
+    }
+    
+    public void draw2ndLetter()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        turnLeft();
+        move();
+        move();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        move();
+        turnLeft();
+    }
+        
+    public void draw3rd4thLetter()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        turnLeft();
+        move();
+        move();
+        move();
+        move();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        move();
+        turnLeft();  
+    }
+    
+    public void draw5thLetter()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        turnLeft();
+        move();
+        move();
+        
+    }
+    
+    /** 
+     * turn robot 90 degrees to right
+     * 
+     * @precondition - none
+     * @postcondition - robot is facing 90degrees to the right of original direction
+     */
+    public void turnRight()
+    {
+        turnLeft();
+        turnLeft();
+        turnLeft();
+    }
+
+}
