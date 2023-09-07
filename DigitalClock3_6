@@ -1,0 +1,250 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * Draws time 
+ * @author Mahika Pandit
+ * @version 6-15-23
+ * 
+*/
+
+// This code is from Chapter 3 , it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class DigitalClock3_6 extends AlienWriter3_5
+{
+    /**
+     * Creates a DigitalClock3_6 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public DigitalClock3_6 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /**
+     * draws text on screen, saying time "10:52"
+     * 
+     * precondition: a blank screen, robot is on 3,2
+     * postcondition: robot on bottom of screen, message "10:52" on screen
+     * 
+     */
+    @Override
+    public void drawText()
+    {
+        drawOne();
+        drawZero();
+        drawColon();
+        drawFive();
+        drawTwo();
+    }
+
+    /**
+     * Draws 1 on screen to show beginning of 10:52
+     * 
+     * precondition: robot is at starting point of 1 with no beepers in board
+     * postcondition: robot at starting point of 0 with 1 on board
+     */
+    public void drawOne()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        turnLeft();
+        move();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        move();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        turnRight();
+        move();
+        putBeeper();
+        turnRight();
+        turnRight();
+        move();
+        move();
+        move();
+        move();
+        move();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        turnRight();    
+    }
+
+    /**
+     * Draws 0 on screen to show middle of 10:52
+     * 
+     * precondition: robot is at starting point of 0 with beepers of 1 on board
+     * postcondition: robot at starting point of colon with 1+0 on board
+     */
+    public void drawZero()
+    {
+         putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        turnRight();
+        turnRight();
+        move();
+        move();
+        move();
+        move();
+        turnLeft();
+        
+    }
+    
+    /**
+     * Draws colon on screen to show middle of 10:52
+     * 
+     * precondition: robot is at starting point of color with beepers of 1+0 on board
+     * postcondition: robot at starting point of five with 1+0+colon on board
+     */
+    public void drawColon()
+    {
+        move();
+        putBeeper();
+        move();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        move();
+        turnRight();
+        move();
+        move();
+        move();
+        turnLeft();
+    }
+    
+    /**
+     * Draws 5 on screen to show end of 10:52
+     * 
+     * precondition: robot is at starting point of 5 with beepers of 1+0+colon on board
+     * postcondition: robot at starting point of 2 with 1+0+colon+5 on board
+     */
+    public void drawFive()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        move();
+        turnRight();
+        move();
+        move();
+        move();
+        move();
+        turnLeft();
+    }
+    
+    /**
+     * Draws 2 on screen to show end of 10:52
+     * 
+     * precondition: robot is at starting point of 2 with beepers of 1+0+colon+5 on board
+     * postcondition: robot at end of screen with full time on board
+     */
+    public void drawTwo()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        turnLeft();
+        move();
+        move();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        turnRight();
+        move();
+    }
+}
