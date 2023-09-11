@@ -1,0 +1,151 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * creates carpet
+ * @author Mahika Pandit
+ * @version 6-15-23
+ */
+
+// This code is from Chapter 3 , it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class HallCarpet3_8 extends Robot
+{
+    /**
+     * Creates a HallCarpet3_8 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public HallCarpet3_8 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* HallCarpet3_8 methods: */
+    /**
+     * Creates carpet for a builing
+     * 
+     * precondtion: empty board, robot at upper-left corner of board 
+     * postcondtion: full board, robot at upper-left corner of board 
+     */
+    public void drawCarpet()
+    {
+        firstColumn();
+        firstRow();
+        secondColumn();
+        secondRow();
+    }
+    
+    /**
+     * Creates first column of carpet
+     * 
+     * precondtion: empty board, robot at upper-left corner of board 
+     * postcondition: first column complete, robot at lower-left corner of board
+     */
+    public void firstColumn()
+    {
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+    }
+    
+    /**
+     * Creates first row of carpet
+     * 
+     * precondtion: first column complete, robot at lower-left corner of board
+     * postcondition: first column/row complete, robot at lower-right corner of board
+    */
+    public void firstRow()
+    {
+         turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+    }
+    
+    /**
+     * Creates second column of carpet
+     * 
+     * precondtion: first column/row complete, robot at lower-right corner of board
+     * postcondition: first column/row complete + second column complete, robot at 
+     * upper-right corner of board
+    */
+    public void secondColumn()
+    {
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+    }
+    
+    /**
+     * Creates last row of carpet
+     * 
+     * precondtion: first column/row complete + second column complete, robot at 
+     * upper-right corner of board
+     * postcondition: full board, robot at upper-left corner of board 
+    */
+    public void secondRow()
+    {
+        turnLeft();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        putBeeper();
+        move();
+        turnLeft();
+    }
+
+}
+
+
