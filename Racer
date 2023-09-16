@@ -1,0 +1,136 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * robot goes through a maze
+ * 
+ * @Mahika Pandit
+ *
+ * @6-17-23
+ */
+
+// This code is from Chapter 4, it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class Racer extends Robot
+{
+    /**
+     * Creates a Racer object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */ 
+    public Racer (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* Racer methods: */
+    
+    /**
+     * calls other classes to make robot pass through maze
+     * 
+     * precondition: robot at beginning of maze
+     * postcondition: robot at end of maze 
+     */
+    public void runRace()
+    {
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride();
+        raceStride(); 
+    }
+    
+    /**
+     * robot goes up wall and preps to go over
+     * 
+     * precondition: robot at beginning of maze
+     * postcondition: robot at top of wall, ready to cross
+     */
+    public void raceStride()
+    {
+        if(frontIsClear())
+        {
+            move();
+        }
+        else
+        {
+            jumpHurdle();
+        }
+    }
+    
+    /**
+     * robot goes over hurdle
+     * 
+     * precondition: robot at beginning of hurdle
+     * postcondition: robot at bottom of hurdle
+     */
+    public void jumpHurdle()
+    {
+        jumpUp();
+        moveAcross();
+        glideDown();
+    }
+    
+    /**
+     * robot goes preps to go over hurdle
+     * 
+     * precondition: robot at beginning of hurdle
+     * postcondition: robot at top of hurdle ready to go over
+     */
+    public void jumpUp()
+    {
+        turnLeft();
+        move();
+        turnRight();
+    }
+    
+    /**
+     * robot goes over hurdle
+     * 
+     * precondition: robot at top of hurdle ready to go over
+     * postcondition: robot at end of hurdle, on top
+     */
+    public void moveAcross()
+    {
+        move();
+    }
+    
+    /**
+     * robot goes down from hurdle
+     * 
+     * precondition: robot at end of hurdle, on top
+     * postcondition: robot at end of hurdle
+     */
+    public void glideDown()
+    {
+        turnRight();
+        move();
+        turnLeft();
+    }
+    
+    /** 
+     * turn robot 90 degrees to right
+     * 
+     * @precondition - none
+     * @postcondition - robot is facing 90degrees to the right of original direction
+     */
+    public void turnRight()
+    {
+        turnLeft();
+        turnLeft();
+        turnLeft();
+    }
+}
