@@ -1,0 +1,123 @@
+ import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ *robot goes through a maze
+ * 
+ * @Mahika Pandit
+ *
+ * @6-19-23
+ */
+
+// This code is from Chapter 5, it is one possible way to solve the problem, WITHOUT variables, 
+// ** this code extends Racer, another code in this repository
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class SteepleChaser5_10 extends SteepleChaser5_6
+{
+    /**
+     * Creates a SteepleChaser5_10 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public SteepleChaser5_10 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* SteepleChaser5_10 methods: */
+
+    /**
+     * calls other classes to make robot pass through maze
+     * 
+     * precondition: robot at beginning of maze
+     * postcondition: robot at end of maze 
+     */
+    @Override
+    public void raceStride()
+    {
+        if(nextToABeeper())
+        {
+            jumpHurdle();
+        }
+        else
+        {
+            move();
+        }
+    }
+    
+    /**
+     * robot goes over hurdle
+     * 
+     * precondition: robot at beginning of hurdle
+     * postcondition: robot at bottom of hurdle
+     */
+    @Override
+    public void jumpHurdle()
+    {
+        jumpUp();
+        glideDown();
+    }
+    
+    /**
+     * robot goes down from hurdle
+     * 
+     * precondition: robot at end of hurdle, on top
+     * postcondition: robot at end of hurdle
+     */
+    @Override
+    public void jumpUp()
+    {
+        pickBeeper();
+        turnLeft();
+        move();
+        if(nextToABeeper())
+        {
+            pickBeeper();
+            move();
+            if(nextToABeeper())
+            {
+                System.out.println("in\n");
+                pickBeeper();
+            }
+            turnLeft();
+            turnLeft();
+        }
+        else
+        {
+            turnLeft();
+            turnLeft();
+        }
+    }    
+    
+    /**
+     * robot goes down from hurdle
+     * 
+     * precondition: robot at end of hurdle, on top
+     * postcondition: robot at end of hurdle
+     */
+    @Override
+    public void glideDown()
+    {
+        move();
+        if(frontIsClear())
+        {
+            move();
+            if(frontIsClear())
+            {
+            
+               move();
+               turnLeft();
+            }
+        }
+        turnLeft();
+    }
+
+}
