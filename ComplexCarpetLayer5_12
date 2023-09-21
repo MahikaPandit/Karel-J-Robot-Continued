@@ -1,0 +1,120 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * carpets rooms with different depths
+ *
+ * @author Mahika Pandit
+ * 
+ * @version June 19, 2023
+ */
+
+// This code is from Chapter 5, it is one possible way to solve the problem, WITHOUT variables, 
+// ** this code extends Racer and CarpetLayer5_11, other codes in this repository
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// this code's constructor calls carpetAllRooms()
+// Have fun :)
+
+public class ComplexCarpetLayer5_12 extends CarpetLayer5_11
+{
+    /**
+     * Creates a ComplexCarpetLayer5_12 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public ComplexCarpetLayer5_12 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* ComplexCarpetLayer5_12 methods: */
+    /**
+     * Moves the robot forward to check if carpetting a room is
+     * appropriate.
+     * 
+     * @precondition  robot at beginning of room
+     * @postcondition robot at beginning of room after checking
+     */
+    @Override
+    public boolean canRoomBeCarpeted()
+    {
+        enterRoom( );
+        if (doBothSidesExist() && frontIsClear())  //<Add your code here>
+        {
+            //System.out.println("print");
+            move();
+                if(doBothSidesExist() && frontIsClear())
+                {
+                    move();
+                    if(doBothSidesExist() && !frontIsClear())
+                    {
+                        turnAround();
+                        move();
+                        putBeeper();
+                        move();
+                        putBeeper();
+                        turnAround();
+                        move();
+                        move();
+                        return true;
+                    }
+                }
+                else if(doBothSidesExist() && !frontIsClear())
+                {
+                    
+                    turnAround();
+                    move();
+                    putBeeper();
+                    turnAround();
+                    move();
+                    return true;
+                }
+            }
+            // && !frontIsClear()
+        if (doBothSidesExist() && !frontIsClear())  //<Add your code here>
+        {
+            // && !frontIsClear()
+            return true;
+        }   
+        exitRoom( );
+        return false;  
+    }
+    
+    /**
+     * Exits the room.  
+     * 
+     * @precondition   This robot's position is somewhere in the room and 
+     *                 its direction is not predescribed.
+     * 
+     * @postcondition  This robot's position is just outside of the 
+     *                 room's entrance on 1st Street.  The room is to the
+     *                 robot's left and this robot is facing the end of 
+     *                 the row of rooms.        
+     */    
+    @Override
+    public void exitRoom()
+    {
+        faceSouth( );
+        move();
+        if(frontIsClear())
+        {
+            move();
+            if(frontIsClear())
+            {
+                move();
+                if(frontIsClear())
+                {
+                    move();
+                }
+            }
+        }
+        turnLeft( );
+    }
+
+}
