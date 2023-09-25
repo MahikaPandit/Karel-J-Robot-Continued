@@ -1,0 +1,131 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * robots execute different patterns according to shape of wall
+ * 
+ * @author Mahika Pandit
+ * 
+ * @version June 19, 2023
+ */
+
+// This code is from Chapter 5, it is one possible way to solve the problem, WITHOUT variables, 
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class MazeWalker5_9 extends Robot
+{
+    /**
+     * Creates a MazeWalker5_9 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public MazeWalker5_9 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* MazeWalker5_9 methods: */
+    /**
+     * makes robots go in certain directions depending on the wall structure
+     * 
+     * @precondition - robots at starting position
+     * @postcondition - robots at ending positions after doing sequence
+     */
+    public void followRight()
+    {
+        if(frontIsClear())
+        {
+            move();
+            turnRight();
+            if(frontIsClear())
+            {
+                move();
+                turnRight();
+                if(frontIsClear())
+                {
+                    scenarioFour();
+                }
+                else
+                {
+                    scenarioThree();
+                }
+            }
+            else
+            {
+                scenarioOne();
+            }
+        }
+        else
+        {
+            scenarioTwo();
+        }
+    }
+    
+    /**
+     * makes robot go through scenarioOne
+     * 
+     * @precondition - robot at starting position
+     * @postcondition - robot at ending position after doing sequence
+     */
+    public void scenarioOne()
+    {
+        turnLeft();
+        
+    }
+    
+    /**
+     * makes robot go through scenarioTwo
+     * 
+     * @precondition - robot at starting position
+     * @postcondition - robot at ending position after doing sequence
+     */
+    public void scenarioTwo()
+    {
+        turnLeft();
+    }
+    
+    /**
+     * makes robot go through scenarioThree
+     * 
+     * @precondition - robot at starting position
+     * @postcondition - robot at ending position after doing sequence
+     */
+    public void scenarioThree()
+    {
+        turnLeft();
+        
+    }
+    
+    /**
+     * makes robot go through scenarioFour
+     * 
+     * @precondition - robot at starting position
+     * @postcondition - robot at ending position after doing sequence
+     */
+    public void scenarioFour()
+    {
+        move();
+    }
+    
+    /** 
+     * turn robot 90 degrees to right
+     * 
+     * @precondition - none
+     * @postcondition - robot is facing 90degrees to the right of original direction
+     */
+    public void turnRight()
+    {
+        turnLeft();
+        turnLeft();
+        turnLeft();
+    }
+    
+
+}
