@@ -1,0 +1,74 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * karel must go to correct pile of beepers
+ * 
+ * @author Mahika Pandit
+ * 
+ * @version June 20, 2023
+ */
+// This code is from Chapter 6, Problem 6_4, it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work, or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class Spy6_4 extends Robot
+{
+    /**
+     * Creates a Spy6_4 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public Spy6_4 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* Spy6_4 methods: */
+    /**
+     * tells robot to turn and pick up beepers to lead to correct pile
+     * 
+     * @precondtion - robot in middle, no beepers in bag
+     * @postcondtion - robot at certain pile and all beepers in middle in bag
+     */
+    public void callAll()
+    {
+        turnRight();
+        while(nextToABeeper())
+        {
+            pickBeeper();
+            turnAround();
+        }
+        move();
+
+    }
+    
+    /**
+     * Turns the robot 180 degrees.
+     */
+    public void turnAround()
+    {
+        turnLeft();
+        turnLeft();
+    }
+
+    /** 
+     * turn robot 90 degrees to right
+     * 
+     * @precondition - none
+     * @postcondition - robot is facing 90degrees to the right of original direction
+     */
+    public void turnRight()
+    {
+        turnLeft();
+        turnLeft();
+        turnLeft();
+    }
+
+}
