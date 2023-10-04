@@ -1,0 +1,50 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ *  robots execute different patterns according to shape of wall
+ * 
+ * @author Mahika Pandit
+ * 
+ * @version June 20, 2023
+ */
+
+// This code is from Chapter 6, Problem 6_16, it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work, or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class MazeWalker6_16 extends MazeWalker5_9
+{
+    /**
+     * Creates a MazeWalker6_16 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public MazeWalker6_16 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* MazeWalker6_16 methods: */
+    
+    /**
+     * robot goes throigh maze and reaches beeper
+     * 
+     * @precondition - robot at beginning of maze, bottom left corner
+     * @postcondition - robot at end of maze, top right corner
+     */
+    public void goThroughMaze()
+    {
+        while(!nextToABeeper())
+        {
+            followRight();
+        }
+    }
+
+}
