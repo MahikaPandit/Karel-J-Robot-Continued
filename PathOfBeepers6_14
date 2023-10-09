@@ -1,0 +1,105 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * robot follows path of beepers
+ * 
+ * @Mahika Pandit
+ *
+ * @6-21-23 
+ */
+
+// This code is from Chapter 6, Problem 6_14, it is one possible way to solve the problem, WITHOUT variables
+// The purpose of this code is to either be an answer key if one would like to check their work, or if someone would like to see how to go about the problem
+// Have fun :)
+
+public class PathOfBeepers6_14 extends Robot
+{
+    /**
+     * Creates a PathOfBeepers6_14 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public PathOfBeepers6_14 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* PathOfBeepers6_14 methods: */
+    
+    public void callAll()
+    {
+        followBeepers();
+    }
+    
+    /**
+     * robot follows beepers
+     * 
+     * @precondition - robot at lower left corner
+     * @postcondition - robot at upper right corner
+     */
+    public void followBeepers()
+    {
+        move();
+        //for(int i=1; i<=7; i++)
+        while(nextToABeeper())
+        {
+            //straight();
+            pickBeeper();
+            if(nextToABeeper())
+            {
+               return; 
+            }
+            move();
+        
+            while(!nextToABeeper())
+            {
+                turnAround();
+                move();
+                turnAround();
+                turnLeft();
+                move();
+                //straight();
+            }
+        }
+    }
+    
+    /*
+     * robot continues straight on path until 2 beepers
+     * 
+     * @precondition - 
+     * @postcondition - 
+     
+    public void straight()
+    {
+        while(nextToABeeper())
+        {
+            pickBeeper();
+            if(nextToABeeper())
+            {
+               return; 
+            }
+            move();
+        }
+        //return false;
+    }
+    */
+    /**
+     * robot turn 180 degrees
+     * 
+     * @postcondition - 180 degrees from original position
+     * 
+     */
+    public void turnAround()
+    {
+        turnLeft();
+        turnLeft();
+    }
+    
+}
