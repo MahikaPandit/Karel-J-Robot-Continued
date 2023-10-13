@@ -1,0 +1,107 @@
+import kareltherobot.*;
+import java.awt.Color;
+
+/**
+ * robot turns certain direction depending on # of beepers
+ * 
+ * @Mahika Pandit
+ *
+ * @6-21-23 
+ */
+
+// This code is from Chapter 6, problem 6_18, it is one possible way to solve the problem, WITHOUT variables, 
+// The purpose of this code is to either be an answer key if one would like to check their work or if someone would like to see how to go about the problem
+// this code's constructor calls callAll()
+// Have fun :)
+
+public class TreasureHunter6_18 extends Robot
+{
+    /**
+     * Creates a TreasureHunter6_18 object.
+     *
+     * @param street     specifies the vertical position on the grid
+     *                   of this robot.
+     * @param avenue     specifies the horizontal position on the grid
+     *                   of this robot.
+     * @param direction  specifies the direction of this robot.
+     * @param beepers    specifies this robot's number of beepers.
+     */
+    public TreasureHunter6_18 (int street, int avenue, 
+           Direction direction, int beepers)
+    {
+        super(street, avenue, direction, beepers);
+    }
+    
+    /* TreasureHunter6_18 methods: */
+    /**
+     * robot goes certain direction depending on # of beepers
+     * @precondition - robot at lower left corner facing north
+     * @postcondition - robot at upper right corner, facing west
+     */
+    public void callAll()
+    {
+        
+        while(!nextToABeeper())
+        {
+            straight();
+            faceEast();
+            for(int i = 1; i <= 4; i++)
+            {
+               if(nextToABeeper()) 
+               {
+                  turnLeft();
+                  pickBeeper();
+               }
+            }
+        }
+        
+        
+    }
+    
+    /**
+     * makes robot face east
+     * 
+     * @postcondition - robot facing east
+     */
+    public void faceEast()
+    {
+        if(facingWest())
+        {
+            turnLeft();
+            turnLeft();
+        }
+        else if(facingNorth())
+        {
+            turnRight();
+        }
+        else if(facingSouth())
+        {
+            turnLeft();
+        }
+        else
+        {
+        }     
+    }
+    
+    /** 
+     * robot turns 90 degrees
+     */
+    public void turnRight()
+    {
+        turnLeft();
+        turnLeft();
+        turnLeft();
+    }
+
+    /**
+     * robot goes straight until reaching a beeper
+     */
+    public void straight()
+    {
+        while(!nextToABeeper())
+        {
+            move();
+        }
+    }
+
+}
